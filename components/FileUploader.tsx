@@ -40,7 +40,7 @@ export const FileUploader = ({ files, onChange }: FileUploaderProps) => {
               <span className="text-green-500">Click to Upload</span> or Drag
               and Drop
             </p>
-            <p className="text-14-regular text-dark-400">
+            <p className="text-8-regular">
               SVG, PNG, JPG, OR Gif (max 800x400)
             </p>
           </div>
