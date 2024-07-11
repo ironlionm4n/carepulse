@@ -70,9 +70,28 @@ export const registerPatient = async ({
         ...patient,
       }
     );
-
+    console.log("New Patient", newPatient);
     return parseStringify(newPatient);
   } catch (error: any) {
     console.log("Error in registering patient", error);
+  }
+};
+
+export const getPatient = async (userId: string) => {
+  console.log("Getting patient", userId);
+
+  try {
+    const patient = await databases.listDocuments(
+      DATABASE_ID!,
+      PATIENT_COLLECTION_ID!,
+      [Query.equal("userId", userId)]
+    );
+
+    if (patient) {
+      console.log("Found Patient", patient);
+      return parseStringify(patient.documents[0]);
+    }
+  } catch (error: any) {
+    console.log("Error in getting patient", error);
   }
 };
