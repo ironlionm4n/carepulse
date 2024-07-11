@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const NewAppointment = async ({ params: { userId } }: SearchParamProps) => {
   const patient = await getPatient(userId);
-  // console.log("NEwAppointment Patient", patient);
+  console.log("NEwAppointment Patient", patient);
   return (
     <div className="flex h-screen max-h-screen">
       <section className="remove-scrollbar container my-auto">
