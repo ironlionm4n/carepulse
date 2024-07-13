@@ -44,7 +44,6 @@ const PatientForm = () => {
     phone,
   }: z.infer<typeof UserFormValidation>) {
     setIsLoading(true);
-    console.log("Submitting form", name, email, phone);
     try {
       const userData = {
         name,

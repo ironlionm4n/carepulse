@@ -39,7 +39,6 @@ const AppointmentForm = ({
   // Define the form
 
   const AppointmentFormValidation = getAppointmentSchema(type);
-  console.log("Appointment Form Validation", appointment);
   const form = useForm<z.infer<typeof AppointmentFormValidation>>({
     resolver: zodResolver(AppointmentFormValidation),
     defaultValues: {
@@ -69,7 +68,6 @@ const AppointmentForm = ({
         status = "pending";
         break;
     }
-    // console.log("Form Values", values, status, patientId, userId);
     try {
       if (type === "create" && patientId) {
         const appointmentData = {
@@ -81,7 +79,6 @@ const AppointmentForm = ({
           note: values.note,
           status: status as Status,
         };
-        console.log("Appointment Data", appointmentData);
         const appointment = await createAppointment(appointmentData);
 
         if (appointment) {

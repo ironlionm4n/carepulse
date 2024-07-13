@@ -59,7 +59,7 @@ const PasskeyModal = () => {
       localStorage.setItem("accessKey", encryptedKey);
       setIsOpen(false);
     } else {
-      setError("Invalid passkey, please try again.");
+      setError("Invalid passkey, please enter 123456.");
     }
   };
 
@@ -84,7 +84,7 @@ const PasskeyModal = () => {
             />
           </AlertDialogTitle>
           <AlertDialogDescription>
-            You must enter the admin access pin to continue.
+            You must enter the admin access pin to continue. Please enter 123456
           </AlertDialogDescription>
         </AlertDialogHeader>
         <div>

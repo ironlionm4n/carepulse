@@ -15,7 +15,6 @@ import { InputFile } from "node-appwrite/file";
 
 export const createUser = async (user: CreateUserParams) => {
   try {
-    console.log("Creating new user", user);
     // userId, email (optional), phone (optional), password (optional), name (optional)
     const newUser = await users.create(
       ID.unique(),
@@ -35,9 +34,7 @@ export const createUser = async (user: CreateUserParams) => {
 };
 export const getUser = async (userId: string) => {
   try {
-    console.log("Getting user", userId);
     const user = await users.get(userId);
-    //console.log("User", user);
     return parseStringify(user);
   } catch (error: any) {
     console.log("Error in getting user", error);
@@ -58,7 +55,6 @@ export const registerPatient = async ({
 
       file = await storage.createFile(BUCKET_ID!, ID.unique(), inputFile);
     }
-    console.log("Creating new patient", patient, file);
 
     const newPatient = await databases.createDocument(
       DATABASE_ID!,
@@ -70,7 +66,6 @@ export const registerPatient = async ({
         ...patient,
       }
     );
-    console.log("New Patient", newPatient);
     return parseStringify(newPatient);
   } catch (error: any) {
     console.log("Error in registering patient", error);
@@ -78,8 +73,6 @@ export const registerPatient = async ({
 };
 
 export const getPatient = async (userId: string) => {
-  console.log("Getting patient", userId);
-
   try {
     const patient = await databases.listDocuments(
       DATABASE_ID!,

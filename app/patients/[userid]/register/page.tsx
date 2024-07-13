@@ -5,7 +5,6 @@ import Link from "next/link";
 import React from "react";
 
 const Register = async ({ params: { userId } }: SearchParamProps) => {
-  console.log("User ID", userId);
   const user = await getUser(userId);
   return (
     <div className="flex h-screen max-h-screen">

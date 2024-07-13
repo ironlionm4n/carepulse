@@ -14,14 +14,12 @@ export const createAppointment = async (
   appointmentData: CreateAppointmentParams
 ) => {
   try {
-    console.log("Creating new appointment", appointmentData);
     const newAppointment = await databases.createDocument(
       DATABASE_ID!,
       APPOINTMENT_COLLECTION_ID!,
       ID.unique(),
       appointmentData
     );
-    console.log("New appointment", newAppointment);
     return parseStringify(newAppointment);
   } catch (error: any) {
     console.log("Error in creating appointment", error);
@@ -35,7 +33,6 @@ export const getAppointment = async (appointmentId: string) => {
       APPOINTMENT_COLLECTION_ID!,
       appointmentId
     );
-    console.log("Appointment details", appointment);
     return parseStringify(appointment);
   } catch (error: any) {
     console.log("Error in getting appointment's details", error);
@@ -54,8 +51,6 @@ export const getAppointments = async () => {
       pendingCount: 0,
       cancelledCount: 0,
     };
-
-    console.log("Getting appointments", appointments);
 
     const counts = (appointments.documents as Appointment[]).reduce(
       (acc, appointment) => {
@@ -88,14 +83,12 @@ export const updateAppointment = async ({
   type,
 }: UpdateAppointmentParams) => {
   try {
-    console.log("Updating appointment", appointment);
     const updatedAppointment = await databases.updateDocument(
       DATABASE_ID!,
       APPOINTMENT_COLLECTION_ID!,
       appointmentId,
       appointment
     );
-    console.log("Updated appointment", updatedAppointment);
     if (!updatedAppointment) {
       throw new Error("Appointment not found");
     }
