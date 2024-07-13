@@ -27,6 +27,7 @@ import Image from "next/image";
 import FileUploader from "../FileUploader";
 
 const RegisterForm = ({ user }: { user: User }) => {
+  console.log("Register Form User", user);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   // Define the form
@@ -35,8 +36,8 @@ const RegisterForm = ({ user }: { user: User }) => {
     defaultValues: {
       ...PatientFormDefaultValues,
       name: user?.name,
-      email: user.email,
-      phone: user.phone,
+      email: user?.email,
+      phone: user?.phone,
     },
   });
 
