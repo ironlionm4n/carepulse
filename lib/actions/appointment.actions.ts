@@ -4,7 +4,6 @@ import {
   APPOINTMENT_COLLECTION_ID,
   DATABASE_ID,
   databases,
-  messaging,
 } from "../appwrite.config";
 import { formatDateTime, parseStringify } from "../utils";
 import { Appointment } from "@/types/appwrite.types";
@@ -102,26 +101,9 @@ export const updateAppointment = async ({
         : `The appointment has been cancelled. Reason: ${appointment.cancellationReason}`
     }`;
 
-    await sendSMSNotification(userId, sms);
-
     revalidatePath("/admin");
     return parseStringify(updatedAppointment);
   } catch (error: any) {
     console.log("Error in updating appointment", error);
-  }
-};
-
-export const sendSMSNotification = async (userId: string, content: string) => {
-  try {
-    const message = await messaging.createSms(
-      ID.unique(),
-      content,
-      [],
-      [userId]
-    );
-
-    return parseStringify(message);
-  } catch (error: any) {
-    console.log("Error in sending SMS notification", error);
   }
 };

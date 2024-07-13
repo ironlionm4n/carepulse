@@ -12,7 +12,7 @@ const Success = async ({
   const appointmentId = (searchParams?.appointmentId as string) || "";
   const appointment = await getAppointment(appointmentId);
   const doctor = Doctors.find(
-    (doc) => doc.name === appointment.primaryPhysician
+    (doc) => doc?.name === appointment.primaryPhysician
   );
   return (
     <div className="flex h-screen max-h-sreen px-[5%]">

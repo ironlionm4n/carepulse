@@ -16,6 +16,7 @@ import { InputFile } from "node-appwrite/file";
 export const createUser = async (user: CreateUserParams) => {
   try {
     // userId, email (optional), phone (optional), password (optional), name (optional)
+    console.log("HELLO", user);
     const newUser = await users.create(
       ID.unique(),
       user.email,
@@ -23,12 +24,14 @@ export const createUser = async (user: CreateUserParams) => {
       undefined,
       user.name
     );
+    console.log("New User", newUser);
     return parseStringify(newUser);
   } catch (error: any) {
+    console.log("Error in creating user", error);
     if (error && error?.code === 409) {
-      const documents = await users.list([Query.equal("email", [user.email])]);
+      const documents = await users.list([Query.equal("name", [user.name])]);
 
-      return documents?.users[0];
+      return parseStringify(documents?.users[0]);
     }
   }
 };
