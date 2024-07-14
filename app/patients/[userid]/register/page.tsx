@@ -6,8 +6,8 @@ import React from "react";
 
 const Register = async ({ params }: SearchParamProps) => {
   console.log("Register Params", params);
-  const user = await getUser(params.userId);
-  console.log(`UserId: ${params.userId}, Found User: ${user}`);
+  const user = await getUser(params.userid);
+  console.log(`UserId: ${params.userid}, Found User: ${user}`);
   return (
     <div className="flex h-screen max-h-screen">
       <section className="remove-scrollbar container">
