@@ -16,7 +16,7 @@ import { InputFile } from "node-appwrite/file";
 export const createUser = async (user: CreateUserParams) => {
   try {
     // userId, email (optional), phone (optional), password (optional), name (optional)
-    console.log("HELLO", user);
+    console.log("HELLO User", user);
     const newUser = await users.create(
       ID.unique(),
       user?.email,
