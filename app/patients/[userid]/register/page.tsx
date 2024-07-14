@@ -4,9 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const Register = async ({ params: { userId } }: SearchParamProps) => {
-  const user = await getUser(userId);
-  console.log(`UserId: ${userId}, Found User: ${user}`);
+const Register = async ({ params }: SearchParamProps) => {
+  console.log("Register Params", params);
+  const user = await getUser(params.userId);
+  console.log(`UserId: ${params.userId}, Found User: ${user}`);
   return (
     <div className="flex h-screen max-h-screen">
       <section className="remove-scrollbar container">
